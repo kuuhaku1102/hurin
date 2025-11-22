@@ -1,0 +1,83 @@
+/**
+ * 都道府県ページ専用スタイル
+ */
+
+/* 都道府県ページ特有のスタイル調整 */
+.prefecture-page .site-header {
+  background: rgba(15, 11, 18, 0.98);
+}
+
+.prefecture-page .page-hero {
+  background: linear-gradient(135deg, rgba(139, 71, 137, 0.25) 0%, rgba(193, 123, 123, 0.2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.prefecture-page .page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(139,71,137,0.1)" stroke-width="0.5"/></svg>');
+  background-size: 200px 200px;
+  opacity: 0.3;
+  animation: float 20s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* 女性カードのホバーエフェクト強化 */
+.prefecture-page .girl-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.prefecture-page .girl-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(193, 123, 123, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.prefecture-page .girl-card:hover::before {
+  opacity: 1;
+}
+
+/* SEO記事のスタイル強化 */
+.prefecture-page .seo-article {
+  position: relative;
+  border-left: 3px solid var(--color-primary);
+}
+
+.prefecture-page .seo-article:hover {
+  border-left-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* 記事内のリンクスタイル */
+.prefecture-page .article-content a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(193, 123, 123, 0.3);
+  transition: all 0.3s ease;
+}
+
+.prefecture-page .article-content a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* 他の都道府県セクションの背景 */
+.prefecture-page .other-prefectures-section {
+  background: linear-gradient(180deg, transparent 0%, rgba(139, 71, 137, 0.05) 100%);
+}
