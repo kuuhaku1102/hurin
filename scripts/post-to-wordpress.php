@@ -44,7 +44,7 @@ switch ( $article_type ) {
 // WordPress REST API設定
 $wp_url = getenv('WP_URL') ?: 'https://volitionmagazine.com';
 $wp_user = getenv('WP_USER') ?: 'admin';
-$wp_password = getenv('WP_APP_PASSWORD'); // アプリケーションパスワード
+$wp_password = getenv('WP_APP_PASSWORD') ?: getenv('WP_PASS'); // アプリケーションパスワード
 
 if ( empty( $wp_password ) ) {
     echo "エラー: WP_APP_PASSWORD 環境変数が設定されていません\n";
