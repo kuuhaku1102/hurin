@@ -3,9 +3,10 @@
  * 都道府県データ定義
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
+// WordPress環境外でも動作するようにABSPATHチェックを削除
+// if ( ! defined( 'ABSPATH' ) ) {
+//     exit;
+// }
 
 /**
  * 47都道府県のデータを返す
