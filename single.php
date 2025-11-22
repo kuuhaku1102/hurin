@@ -13,6 +13,12 @@ get_header();
 
   <!-- 記事ヘッダー -->
   <article id="post-<?php the_ID(); ?>" <?php post_class('single-post'); ?>>
+    <?php if ( has_post_thumbnail() ) : ?>
+      <div class="post-thumbnail">
+        <?php the_post_thumbnail( 'large' ); ?>
+      </div>
+    <?php endif; ?>
+    
     <header class="post-header">
       <div class="post-meta">
         <?php

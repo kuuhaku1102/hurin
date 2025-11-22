@@ -18,6 +18,14 @@
       </div>
       <p class="site-tagline">大人の秘密の出会い - 既婚者専用不倫募集掲示板</p>
       
+      <!-- ナビゲーションメニュー -->
+      <nav class="main-nav">
+        <ul class="nav-menu">
+          <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">ホーム</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>">コラム</a></li>
+        </ul>
+      </nav>
+      
       <?php
       // パンくずリスト（都道府県ページの場合のみ表示）
       if ( is_page_template( 'page-prefecture.php' ) ) {

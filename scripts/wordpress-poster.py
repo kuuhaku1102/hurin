@@ -3,6 +3,8 @@ import requests
 import json
 import re
 from html.parser import HTMLParser
+import tempfile
+import mimetypes
 
 # 環境変数を取得
 WP_URL = os.getenv("WP_URL")
@@ -40,7 +42,82 @@ def remove_h1_from_html(html_content):
     html_content = re.sub(r'<h1[^>]*>.*?</h1>', '', html_content, flags=re.DOTALL)
     return html_content.strip()
 
-def post_to_wordpress(title, content, category, tags):
+def get_thumbnail_image(keywords):
+    """
+    Picsum Photosからフリー素材画像を取得する
+    
+    Args:
+        keywords: 検索キーワード（使用しないが互換性のため残す）
+    
+    Returns:
+        画像データ（bytes）またはNone
+    """
+    try:
+        # Picsum Photosを使用（API key不要、安定している）
+        # ランダムな美しい画像を取得
+        import random
+        random_seed = random.randint(1, 1000)
+        image_url = f"https://picsum.photos/seed/{random_seed}/800/600"
+        
+        print(f"📷 画像を取得中: {image_url}")
+        response = requests.get(image_url, timeout=10)
+        
+        if response.status_code == 200:
+            print("✅ 画像の取得に成功しました")
+            return response.content
+        else:
+            print(f"❌ 画像の取得に失敗しました: {response.status_code}")
+            return None
+    except Exception as e:
+        print(f"❌ 画像取得エラー: {e}")
+        return None
+
+def upload_media_to_wordpress(image_data, filename, auth):
+    """
+    WordPressに画像をアップロードする
+    
+    Args:
+        image_data: 画像データ（bytes）
+        filename: ファイル名
+        auth: WordPress認証情報
+    
+    Returns:
+        アップロードされた画像のID、またはNone
+    """
+    try:
+        media_url = f"{WP_URL}/wp-json/wp/v2/media"
+        
+        # ファイルの拡張子からMIMEタイプを取得
+        mime_type, _ = mimetypes.guess_type(filename)
+        if not mime_type:
+            mime_type = "image/jpeg"
+        
+        headers = {
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Content-Type": mime_type,
+        }
+        
+        print(f"📤 WordPressに画像をアップロード中...")
+        response = requests.post(
+            media_url,
+            headers=headers,
+            data=image_data,
+            auth=auth
+        )
+        
+        if response.status_code == 201:
+            media_id = response.json()["id"]
+            print(f"✅ 画像のアップロードに成功しました (ID: {media_id})")
+            return media_id
+        else:
+            print(f"❌ 画像のアップロードに失敗しました: {response.status_code}")
+            print(f"レスポンス: {response.text}")
+            return None
+    except Exception as e:
+        print(f"❌ 画像アップロードエラー: {e}")
+        return None
+
+def post_to_wordpress(title, content, category, tags, featured_image_id=None):
     """WordPressに記事を投稿する"""
 
     # APIエンドポイント
@@ -71,6 +148,11 @@ def post_to_wordpress(title, content, category, tags):
         "categories": [category_id],
         "tags": tag_ids,
     }
+    
+    # アイキャッチ画像を設定
+    if featured_image_id:
+        post_data["featured_media"] = featured_image_id
+        print(f"🖼️ アイキャッチ画像を設定: ID {featured_image_id}")
 
     # 投稿
     response = requests.post(api_url, headers=headers, auth=auth, json=post_data)
@@ -146,5 +228,29 @@ if __name__ == "__main__":
     
     category = "不倫募集掲示板の活用法"
     tags = ["不倫募集", "セカンドパートナー"]
-
-    post_to_wordpress(title, content, category, tags)
+    
+    # 認証情報
+    auth = (WP_USER, WP_APP_PASSWORD)
+    
+    # サムネイル画像を取得してアップロード
+    featured_image_id = None
+    print("\n" + "="*50)
+    print("📷 サムネイル画像の取得・アップロード")
+    print("="*50)
+    
+    image_data = get_thumbnail_image("couple,romance")
+    if image_data:
+        # 画像をWordPressにアップロード
+        import time
+        import hashlib
+        # タイトルのハッシュを使ってユニークなファイル名を生成（ASCIIのみ）
+        title_hash = hashlib.md5(title.encode('utf-8')).hexdigest()[:8]
+        timestamp = int(time.time())
+        filename = f"thumbnail_{timestamp}_{title_hash}.jpg"
+        featured_image_id = upload_media_to_wordpress(image_data, filename, auth)
+    
+    # 記事を投稿
+    print("\n" + "="*50)
+    print("📝 記事の投稿")
+    print("="*50)
+    post_to_wordpress(title, content, category, tags, featured_image_id)
