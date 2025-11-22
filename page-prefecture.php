@@ -6,7 +6,7 @@
  */
 
 $prefecture_slug = get_query_var('prefecture');
-$prefecture_data = hurin_get_prefecture_data( $prefecture_slug );
+$prefecture_data = hurin_get_prefecture_by_slug( $prefecture_slug );
 
 if ( ! $prefecture_data ) {
     // 404ページにリダイレクト
@@ -109,7 +109,7 @@ get_header();
     </div>
 
     <?php
-    $all_prefectures = hurin_get_all_prefectures();
+    $all_prefectures = hurin_get_prefectures();
     // 現在の都道府県を除外
     $other_prefectures = array_filter( $all_prefectures, function( $pref ) use ( $prefecture_slug ) {
       return $pref['slug'] !== $prefecture_slug;

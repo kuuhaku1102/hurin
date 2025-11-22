@@ -24,7 +24,7 @@
         $current_url = $_SERVER['REQUEST_URI'];
         if ( preg_match( '#/prefecture/([^/]+)/?#', $current_url, $matches ) ) {
           $prefecture_slug = $matches[1];
-          $prefecture_data = hurin_get_prefecture_data( $prefecture_slug );
+          $prefecture_data = hurin_get_prefecture_by_slug( $prefecture_slug );
           if ( $prefecture_data ) {
             ?>
             <nav class="breadcrumb">
