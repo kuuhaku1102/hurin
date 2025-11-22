@@ -1,28 +1,13 @@
 <?php
 /**
  * 不倫募集掲示板 - トップページ
+ * 
+ * @package Hurin_Theme
  */
 
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-  <meta charset="<?php bloginfo('charset'); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php bloginfo('name'); ?> - 不倫募集掲示板｜大人の秘密の出会い</title>
-  <meta name="description" content="不倫募集掲示板で理想の不倫パートナーを見つけよう。全国47都道府県対応の既婚者専用掲示板。秘密厳守で安全な大人の関係をサポートします。">
-  <meta name="keywords" content="不倫募集,不倫募集掲示板,不倫パートナー,既婚者,大人の出会い,秘密交際">
-  <?php wp_head(); ?>
-</head>
-<body <?php body_class(); ?>>
-<div class="wrap">
-  
-  <!-- ヘッダー -->
-  <header class="site-header">
-    <div class="header-content">
-      <h1 class="site-title"><?php bloginfo('name'); ?></h1>
-      <p class="site-tagline">大人の秘密の出会い - 既婚者専用不倫募集掲示板</p>
-    </div>
-  </header>
+// ヘッダーの読み込み
+get_header();
+?>
 
   <!-- メインビジュアル -->
   <section class="hero-section">
@@ -33,7 +18,7 @@
     </div>
   </section>
 
-  <!-- 都道府県一覧セクション（上部に移動） -->
+  <!-- 都道府県一覧セクション -->
   <section class="regions-section" id="regions">
     <div class="section-header">
       <h2 class="section-title">お住まいの地域を<br class="sp-only">お選びください</h2>
@@ -296,16 +281,6 @@
     </div>
   </section>
 
-  <!-- フッター -->
-  <footer class="footer">
-    <div class="footer-content">
-      <p class="footer-note">※ 当サイトは18歳以上の既婚者専用です。プライバシーは厳守されます。</p>
-      <p class="footer-copyright">&copy; <?php echo date( 'Y' ); ?> <?php bloginfo('name'); ?>. All rights reserved.</p>
-    </div>
-  </footer>
-
-</div>
-
-<?php wp_footer(); ?>
-</body>
-</html>
+<?php
+// フッターの読み込み
+get_footer();
