@@ -55,17 +55,12 @@ $girls = hurin_get_random_girls_by_prefecture( $prefecture_name );
 
   <!-- 女性一覧セクション -->
   <?php if ( ! empty( $girls ) ) : ?>
-  <section class="girls-section">
-    <div class="section-header">
-      <h2 class="section-title"><?php echo esc_html( $prefecture_name ); ?>で出会いを<br class="sp-only">求めている女性</h2>
-      <p class="section-description">現在募集中の女性を表示しています（<?php echo count($girls); ?>件表示中）</p>
-    </div>
-
-    <div class="girls-list">
+    <section class="girls-list">
       <?php foreach ( $girls as $girl ) :
-        // サムネイルURL
+        // サムネイルURL（/images から始まるパス想定）
         $thumb = '';
         if ( ! empty( $girl->samune ) ) {
+          // samune が /images/〜 のようなパスの場合、サイトURLを前に付ける
           if ( strpos( $girl->samune, 'http' ) === 0 ) {
             $thumb = esc_url( $girl->samune );
           } else {
@@ -73,33 +68,24 @@ $girls = hurin_get_random_girls_by_prefecture( $prefecture_name );
           }
         }
       ?>
-      <article class="girl-card">
+      <article class="girl">
         <?php if ( $thumb ) : ?>
           <div class="girl-thumb">
             <img src="<?php echo $thumb; ?>" alt="<?php echo esc_attr( $girl->name ); ?>">
           </div>
         <?php endif; ?>
         <div class="girl-body">
-          <h3 class="girl-name"><?php echo esc_html( $girl->name ); ?></h3>
+          <h2 class="girl-name"><?php echo esc_html( $girl->name ); ?></h2>
 
           <div class="girl-meta">
             <?php if ( $girl->age !== null && $girl->age !== '' ) : ?>
-              <span class="meta-item">
-                <span class="meta-label">年齢</span>
-                <span class="meta-value"><?php echo esc_html( $girl->age ); ?>歳</span>
-              </span>
+              <span><span class="girl-meta-label">年齢</span><?php echo esc_html( $girl->age ); ?></span>
             <?php endif; ?>
             <?php if ( $girl->figure !== null && $girl->figure !== '' ) : ?>
-              <span class="meta-item">
-                <span class="meta-label">体型</span>
-                <span class="meta-value"><?php echo esc_html( $girl->figure ); ?></span>
-              </span>
+              <span><span class="girl-meta-label">体型</span><?php echo esc_html( $girl->figure ); ?></span>
             <?php endif; ?>
             <?php if ( $girl->character !== null && $girl->character !== '' ) : ?>
-              <span class="meta-item">
-                <span class="meta-label">性格</span>
-                <span class="meta-value"><?php echo esc_html( $girl->character ); ?></span>
-              </span>
+              <span><span class="girl-meta-label">性格</span><?php echo esc_html( $girl->character ); ?></span>
             <?php endif; ?>
           </div>
 
@@ -108,22 +94,16 @@ $girls = hurin_get_random_girls_by_prefecture( $prefecture_name );
           <?php endif; ?>
 
           <?php if ( $girl->url !== null && $girl->url !== '' ) : ?>
-            <div class="girl-action">
-              <a href="<?php echo esc_url( $girl->url ); ?>" target="_blank" rel="noopener" class="contact-btn">プロフィールを見る</a>
-            </div>
+            <p class="girl-link">
+              <a href="<?php echo esc_url( $girl->url ); ?>" target="_blank" rel="noopener">プロフィールを見る</a>
+            </p>
           <?php endif; ?>
         </div>
       </article>
       <?php endforeach; ?>
-    </div>
-  </section>
+    </section>
   <?php else : ?>
-  <section class="girls-section">
-    <div class="no-girls-message">
-      <p>現在、<?php echo esc_html( $prefecture_name ); ?>で募集中の女性はいません。</p>
-      <p>新しい登録をお待ちください。</p>
-    </div>
-  </section>
+    <p>表示できるデータがありません。</p>
   <?php endif; ?>
 
   <!-- 都道府県別SEOコンテンツ -->
