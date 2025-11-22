@@ -1,0 +1,43 @@
+name: Weekly AI Article - Meeting Spots
+
+on:
+  schedule:
+    # 毎週月曜日午前10時（日本時間）に実行 = UTC 1時
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+jobs:
+  generate-and-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install openai requests
+
+      - name: Generate AI-powered article (Meeting Spots)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          cd scripts
+          python3 generate-article.py spot
+
+      - name: Post article to WordPress
+        env:
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: |
+          cd scripts
+          python3 wordpress-poster.py
+
+      - name: Deployment completed
+        run: |
+          echo "✅ AI生成記事（待ち合わせスポット）をWordPressに投稿しました"
