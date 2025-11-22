@@ -12,6 +12,11 @@
  * - manner: 大人の関係のマナー
  */
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+echo "=== WordPress自動投稿スクリプト ===\n\n";
+
 // 引数チェック
 if ( $argc < 2 ) {
     echo "使用方法: php post-to-wordpress.php <article_type>\n";
@@ -20,12 +25,16 @@ if ( $argc < 2 ) {
 }
 
 $article_type = $argv[1];
+echo "記事タイプ: $article_type\n";
 
 // テンプレートファイルを読み込み
+echo "テンプレートファイルを読み込み中...\n";
 require_once __DIR__ . '/../inc/prefecture-data.php';
 require_once __DIR__ . '/../inc/article-templates.php';
+echo "テンプレートファイルの読み込み完了\n";
 
 // 記事データを取得
+echo "記事データを生成中...\n";
 switch ( $article_type ) {
     case 'usage':
         $article = hurin_get_template_usage_guide();
@@ -41,10 +50,18 @@ switch ( $article_type ) {
         exit(1);
 }
 
+echo "記事タイトル: {$article['title']}\n";
+echo "カテゴリー: {$article['category']}\n\n";
+
 // WordPress REST API設定
+echo "WordPress設定を確認中...\n";
 $wp_url = getenv('WP_URL') ?: 'https://volitionmagazine.com';
 $wp_user = getenv('WP_USER') ?: 'admin';
 $wp_password = getenv('WP_APP_PASSWORD') ?: getenv('WP_PASS'); // アプリケーションパスワード
+
+echo "WP_URL: $wp_url\n";
+echo "WP_USER: $wp_user\n";
+echo "WP_PASS: " . (empty($wp_password) ? "未設定" : "設定済み(" . strlen($wp_password) . "文字)") . "\n\n";
 
 if ( empty( $wp_password ) ) {
     echo "エラー: WP_APP_PASSWORD 環境変数が設定されていません\n";
@@ -52,14 +69,17 @@ if ( empty( $wp_password ) ) {
 }
 
 // カテゴリーIDを取得または作成
+echo "カテゴリーを取得/作成中...\n";
 $category_id = get_or_create_category( $wp_url, $wp_user, $wp_password, $article['category'] );
 
 if ( ! $category_id ) {
     echo "エラー: カテゴリーの取得/作成に失敗しました\n";
     exit(1);
 }
+echo "カテゴリーID: $category_id\n";
 
 // タグIDを取得または作成
+echo "タグを取得/作成中...\n";
 $tag_ids = array();
 foreach ( $article['tags'] as $tag_name ) {
     $tag_id = get_or_create_tag( $wp_url, $wp_user, $wp_password, $tag_name );
@@ -77,7 +97,10 @@ $post_data = array(
     'tags' => $tag_ids,
 );
 
+echo "タグID: " . implode(', ', $tag_ids) . "\n\n";
+
 // WordPress REST APIに投稿
+echo "WordPressに投稿中...\n";
 $result = create_post( $wp_url, $wp_user, $wp_password, $post_data );
 
 if ( $result ) {
