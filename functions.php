@@ -122,6 +122,34 @@ function hurin_get_girls_by_prefecture( $prefecture_name ) {
 }
 
 /**
+ * 都道府県別に女性データをランダムに8-12件取得
+ * 
+ * @param string $prefecture_name 都道府県名
+ * @return array 女性データの配列
+ */
+function hurin_get_random_girls_by_prefecture( $prefecture_name ) {
+    global $wpdb;
+    $table = $wpdb->prefix . 'mama_gen';
+    
+    // ランダムな件数を8-12の間で決定
+    $limit = rand(8, 12);
+    
+    $girls = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT * FROM {$table} 
+            WHERE post_status = 'publish' 
+            AND prefecture = %s 
+            ORDER BY RAND() 
+            LIMIT %d",
+            $prefecture_name,
+            $limit
+        )
+    );
+    
+    return $girls;
+}
+
+/**
  * 都道府県のURL生成
  * 
  * @param string $slug 都道府県スラッグ

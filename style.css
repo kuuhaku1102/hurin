@@ -1,9 +1,9 @@
 /*
 Theme Name: 不倫募集掲示板
 Theme URI: https://example.com/
-Description: 既婚者専用の不倫募集掲示板テーマ。妖艶で大人っぽいデザイン。
+Description: 既婚者専用の不倫募集掲示板テーマ。清潔感のある明るいデザイン。
 Author: InfinityDesign
-Version: 2.0
+Version: 2.1
 Text Domain: hurin-theme
 */
 
@@ -12,21 +12,23 @@ Text Domain: hurin-theme
 ======================================== */
 
 :root {
-  /* カラーパレット - 妖艶な大人の雰囲気 */
-  --color-primary: #8B4789;        /* 深い紫 */
-  --color-primary-dark: #6B3569;   /* より濃い紫 */
-  --color-secondary: #C17B7B;      /* ローズゴールド */
-  --color-accent: #D4AF37;         /* ゴールド */
-  --color-bg-dark: #1a1520;        /* ダークな背景 */
-  --color-bg-darker: #0f0b12;      /* より暗い背景 */
-  --color-bg-light: #2a2030;       /* 少し明るい背景 */
-  --color-text: #e8e0e8;           /* 明るいテキスト */
-  --color-text-muted: #b8a8b8;     /* 控えめなテキスト */
-  --color-border: #3a3040;         /* ボーダー */
-  --color-card-bg: #241a28;        /* カード背景 */
+  /* カラーパレット - 清潔感のある明るい雰囲気 */
+  --color-primary: #4A90E2;        /* 爽やかなブルー */
+  --color-primary-light: #6BA3E8;  /* 明るいブルー */
+  --color-primary-dark: #3A7BC8;   /* 濃いブルー */
+  --color-secondary: #E8B4B8;      /* 優しいピンク */
+  --color-accent: #FF6B9D;         /* アクセントピンク */
+  --color-bg: #FFFFFF;             /* 白背景 */
+  --color-bg-light: #F8F9FA;       /* 薄いグレー背景 */
+  --color-bg-gray: #F0F2F5;        /* グレー背景 */
+  --color-text: #2C3E50;           /* ダークグレーテキスト */
+  --color-text-light: #5A6C7D;     /* ライトグレーテキスト */
+  --color-text-muted: #95A5A6;     /* 控えめなテキスト */
+  --color-border: #E1E8ED;         /* ボーダー */
+  --color-card-bg: #FFFFFF;        /* カード背景 */
   
   /* フォント */
-  --font-main: "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Yu Gothic", "YuGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
   --font-elegant: "游明朝", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", serif;
   
   /* スペーシング */
@@ -37,15 +39,14 @@ Text Domain: hurin-theme
   --spacing-xl: 60px;
   
   /* ボーダー半径 */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   
   /* シャドウ */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 20px rgba(139, 71, 137, 0.3);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 * {
@@ -56,10 +57,9 @@ Text Domain: hurin-theme
 
 body {
   font-family: var(--font-main);
-  background: linear-gradient(135deg, var(--color-bg-darker) 0%, var(--color-bg-dark) 50%, #1a1228 100%);
-  background-attachment: fixed;
+  background: var(--color-bg-light);
   color: var(--color-text);
-  line-height: 1.8;
+  line-height: 1.7;
   font-size: 16px;
   min-height: 100vh;
 }
@@ -75,14 +75,13 @@ body {
 ======================================== */
 
 .site-header {
-  background: rgba(26, 21, 32, 0.95);
-  backdrop-filter: blur(10px);
+  background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   padding: var(--spacing-md) var(--spacing-sm);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .header-content {
@@ -92,32 +91,31 @@ body {
 
 .site-title {
   font-family: var(--font-elegant);
-  font-size: 28px;
-  font-weight: 500;
-  color: var(--color-accent);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-primary);
   margin: 0;
-  letter-spacing: 0.05em;
-  text-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+  letter-spacing: 0.02em;
 }
 
 .site-logo a {
   font-family: var(--font-elegant);
   font-size: 20px;
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: none;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   transition: color 0.3s ease;
 }
 
 .site-logo a:hover {
-  color: var(--color-secondary);
+  color: var(--color-primary-dark);
 }
 
 .site-tagline {
   font-size: 13px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   margin-top: var(--spacing-xs);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .breadcrumb {
@@ -127,13 +125,13 @@ body {
 }
 
 .breadcrumb a {
-  color: var(--color-secondary);
+  color: var(--color-primary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .breadcrumb a:hover {
-  color: var(--color-accent);
+  color: var(--color-primary-dark);
 }
 
 .breadcrumb .separator {
@@ -150,58 +148,37 @@ body {
 ======================================== */
 
 .hero-section {
-  background: linear-gradient(135deg, rgba(139, 71, 137, 0.15) 0%, rgba(193, 123, 123, 0.1) 100%);
+  background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
   border-bottom: 1px solid var(--color-border);
   padding: var(--spacing-xl) var(--spacing-sm);
   text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(139, 71, 137, 0.1) 0%, transparent 70%);
-  animation: pulse 8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.1); }
 }
 
 .hero-content {
-  position: relative;
-  z-index: 1;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .hero-title {
   font-family: var(--font-elegant);
-  font-size: 42px;
-  font-weight: 500;
-  color: var(--color-accent);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--color-primary);
   margin-bottom: var(--spacing-md);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   line-height: 1.4;
-  text-shadow: 0 2px 12px rgba(212, 175, 55, 0.4);
 }
 
 .hero-description {
   font-size: 16px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   margin-bottom: var(--spacing-lg);
   line-height: 1.8;
 }
 
 .hero-cta {
   display: inline-block;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: var(--color-primary);
   color: #fff;
   padding: 14px 40px;
   border-radius: 50px;
@@ -210,13 +187,13 @@ body {
   font-weight: 500;
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-md);
 }
 
 .hero-cta:hover {
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  background: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(139, 71, 137, 0.5);
+  box-shadow: var(--shadow-lg);
 }
 
 /* ========================================
@@ -224,7 +201,7 @@ body {
 ======================================== */
 
 .page-hero {
-  background: linear-gradient(135deg, rgba(139, 71, 137, 0.2) 0%, rgba(193, 123, 123, 0.15) 100%);
+  background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
   border-bottom: 1px solid var(--color-border);
   padding: var(--spacing-lg) var(--spacing-sm);
   text-align: center;
@@ -232,17 +209,17 @@ body {
 
 .page-title {
   font-family: var(--font-elegant);
-  font-size: 36px;
-  font-weight: 500;
-  color: var(--color-accent);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   line-height: 1.4;
 }
 
 .page-description {
   font-size: 15px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   line-height: 1.8;
 }
 
@@ -256,7 +233,13 @@ body {
 .prefecture-seo-section,
 .other-prefectures-section {
   padding: var(--spacing-xl) var(--spacing-sm);
+  background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
+}
+
+.seo-content-section,
+.prefecture-seo-section {
+  background: var(--color-bg-light);
 }
 
 .section-header {
@@ -266,18 +249,18 @@ body {
 
 .section-title {
   font-family: var(--font-elegant);
-  font-size: 32px;
-  font-weight: 500;
-  color: var(--color-accent);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   line-height: 1.4;
 }
 
 .section-description {
   font-size: 14px;
-  color: var(--color-text-muted);
-  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+  letter-spacing: 0.02em;
 }
 
 /* ========================================
@@ -304,7 +287,7 @@ body {
 .content-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--color-primary);
+  border-color: var(--color-primary-light);
 }
 
 .content-card-icon {
@@ -316,17 +299,17 @@ body {
 .content-card-title {
   font-family: var(--font-elegant);
   font-size: 20px;
-  font-weight: 500;
-  color: var(--color-secondary);
+  font-weight: 600;
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
   text-align: center;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   line-height: 1.5;
 }
 
 .content-card-text {
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   line-height: 1.8;
   margin-bottom: var(--spacing-sm);
 }
@@ -334,7 +317,7 @@ body {
 .content-card-list {
   list-style: none;
   font-size: 13px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
 }
 
 .content-card-list li {
@@ -344,7 +327,7 @@ body {
 }
 
 .content-card-list li::before {
-  content: '・';
+  content: '✓';
   position: absolute;
   left: 0;
   color: var(--color-primary);
@@ -379,12 +362,12 @@ body {
 .region-name {
   font-family: var(--font-elegant);
   font-size: 18px;
-  font-weight: 500;
-  color: var(--color-accent);
+  font-weight: 600;
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
   padding-bottom: var(--spacing-xs);
-  border-bottom: 1px solid var(--color-border);
-  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--color-primary-light);
+  letter-spacing: 0.02em;
 }
 
 .prefecture-list {
@@ -406,8 +389,8 @@ body {
 }
 
 .prefecture-link:hover {
-  background: rgba(139, 71, 137, 0.2);
-  color: var(--color-secondary);
+  background: var(--color-bg-gray);
+  color: var(--color-primary);
   padding-left: 16px;
 }
 
@@ -435,25 +418,15 @@ body {
 .girl-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--color-secondary);
+  border-color: var(--color-primary-light);
 }
 
 .girl-thumb {
   width: 100%;
   height: 240px;
   overflow: hidden;
-  background: var(--color-bg-light);
+  background: var(--color-bg-gray);
   position: relative;
-}
-
-.girl-thumb::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: linear-gradient(to top, var(--color-card-bg), transparent);
 }
 
 .girl-thumb img {
@@ -474,10 +447,10 @@ body {
 .girl-name {
   font-family: var(--font-elegant);
   font-size: 20px;
-  font-weight: 500;
-  color: var(--color-secondary);
+  font-weight: 600;
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
 .girl-meta {
@@ -492,6 +465,9 @@ body {
   align-items: center;
   gap: 6px;
   font-size: 13px;
+  background: var(--color-bg-gray);
+  padding: 4px 10px;
+  border-radius: 20px;
 }
 
 .meta-label {
@@ -501,11 +477,12 @@ body {
 
 .meta-value {
   color: var(--color-text);
+  font-weight: 500;
 }
 
 .girl-comment {
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   line-height: 1.7;
   margin-bottom: var(--spacing-sm);
 }
@@ -516,7 +493,7 @@ body {
 
 .contact-btn {
   display: inline-block;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: var(--color-primary);
   color: #fff;
   padding: 10px 24px;
   border-radius: 50px;
@@ -528,15 +505,19 @@ body {
 }
 
 .contact-btn:hover {
-  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-  box-shadow: var(--shadow-glow);
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
 .no-girls-message {
   text-align: center;
   padding: var(--spacing-xl);
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
+  background: var(--color-bg-gray);
+  border-radius: var(--radius-lg);
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .no-girls-message p {
@@ -567,8 +548,8 @@ body {
 
 .article-tag {
   display: inline-block;
-  background: rgba(139, 71, 137, 0.3);
-  color: var(--color-accent);
+  background: var(--color-primary-light);
+  color: #fff;
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 11px;
@@ -579,15 +560,15 @@ body {
 
 .article-title {
   font-family: var(--font-elegant);
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--color-secondary);
-  letter-spacing: 0.05em;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
   line-height: 1.5;
 }
 
 .article-content {
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   line-height: 1.9;
 }
 
@@ -599,10 +580,11 @@ body {
 .article-content h4 {
   font-family: var(--font-elegant);
   font-size: 18px;
-  color: var(--color-accent);
+  color: var(--color-primary);
   margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-sm);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
+  font-weight: 600;
 }
 
 .article-content ul {
@@ -619,7 +601,7 @@ body {
 }
 
 .article-content ul li::before {
-  content: '◆';
+  content: '●';
   position: absolute;
   left: 0;
   color: var(--color-primary);
@@ -628,7 +610,7 @@ body {
 
 .article-content strong {
   color: var(--color-text);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* ========================================
@@ -656,9 +638,9 @@ body {
 }
 
 .other-prefecture-link:hover {
-  background: rgba(139, 71, 137, 0.2);
+  background: var(--color-primary);
   border-color: var(--color-primary);
-  color: var(--color-secondary);
+  color: #fff;
 }
 
 .back-to-top-link {
@@ -667,14 +649,15 @@ body {
 }
 
 .back-to-top-link a {
-  color: var(--color-secondary);
+  color: var(--color-primary);
   text-decoration: none;
   font-size: 14px;
   transition: color 0.3s ease;
 }
 
 .back-to-top-link a:hover {
-  color: var(--color-accent);
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }
 
 /* ========================================
@@ -682,7 +665,7 @@ body {
 ======================================== */
 
 .footer {
-  background: var(--color-bg-darker);
+  background: var(--color-bg-gray);
   border-top: 1px solid var(--color-border);
   padding: var(--spacing-lg) var(--spacing-sm);
   text-align: center;
@@ -695,7 +678,7 @@ body {
 
 .footer-note {
   font-size: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   margin-bottom: var(--spacing-sm);
   line-height: 1.6;
 }
@@ -703,7 +686,6 @@ body {
 .footer-copyright {
   font-size: 11px;
   color: var(--color-text-muted);
-  opacity: 0.7;
   letter-spacing: 0.05em;
 }
 
@@ -721,15 +703,15 @@ body {
   }
   
   .hero-title {
-    font-size: 32px;
-  }
-  
-  .page-title {
     font-size: 28px;
   }
   
+  .page-title {
+    font-size: 24px;
+  }
+  
   .section-title {
-    font-size: 26px;
+    font-size: 22px;
   }
   
   .content-grid {
@@ -759,15 +741,15 @@ body {
 
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 26px;
-  }
-  
-  .page-title {
     font-size: 24px;
   }
   
+  .page-title {
+    font-size: 20px;
+  }
+  
   .section-title {
-    font-size: 22px;
+    font-size: 20px;
   }
   
   .hero-cta {

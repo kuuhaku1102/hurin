@@ -18,8 +18,8 @@ if ( ! $prefecture_data ) {
 $prefecture_name = $prefecture_data['name'];
 $region_name = $prefecture_data['region'];
 
-// 該当都道府県の女性データを取得
-$girls = hurin_get_girls_by_prefecture( $prefecture_name );
+// 該当都道府県の女性データをランダムに8-12件取得
+$girls = hurin_get_random_girls_by_prefecture( $prefecture_name );
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -58,7 +58,7 @@ $girls = hurin_get_girls_by_prefecture( $prefecture_name );
   <section class="girls-section">
     <div class="section-header">
       <h2 class="section-title"><?php echo esc_html( $prefecture_name ); ?>で出会いを<br class="sp-only">求めている女性</h2>
-      <p class="section-description">現在<?php echo count($girls); ?>名の女性が登録中</p>
+      <p class="section-description">現在募集中の女性を表示しています（<?php echo count($girls); ?>件表示中）</p>
     </div>
 
     <div class="girls-list">
