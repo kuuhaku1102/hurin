@@ -18,8 +18,8 @@ if ( ! $prefecture_data ) {
 $prefecture_name = $prefecture_data['name'];
 $region_name = $prefecture_data['region'];
 
-// 該当都道府県の女性データをランダムに8-12件取得
-$girls = hurin_get_random_girls_by_prefecture( $prefecture_name );
+// 全女性データからランダムに8-12件取得（都道府県条件なし）
+$girls = hurin_get_random_girls();
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>

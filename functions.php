@@ -150,6 +150,28 @@ function hurin_get_random_girls_by_prefecture( $prefecture_name ) {
 }
 
 /**
+ * 全女性データからランダムに8-12件取得（都道府県条件なし）
+ * 
+ * @return array 女性データの配列
+ */
+function hurin_get_random_girls() {
+    global $wpdb;
+    $table = $wpdb->prefix . 'mama_gen';
+    
+    // ランダムな件数を8-12の間で決定
+    $limit = rand(8, 12);
+    
+    $girls = $wpdb->get_results(
+        "SELECT * FROM {$table} 
+        WHERE post_status = 'publish' 
+        ORDER BY RAND() 
+        LIMIT {$limit}"
+    );
+    
+    return $girls;
+}
+
+/**
  * 都道府県のURL生成
  * 
  * @param string $slug 都道府県スラッグ
