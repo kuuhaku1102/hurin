@@ -1,0 +1,33 @@
+name: Weekly Post - Manner Guide (once a week)
+
+on:
+  schedule:
+    # 毎週日曜日の午前11時（JST）に実行 = UTC 2時
+    - cron: '0 2 * * 0'
+  workflow_dispatch: # 手動実行も可能
+
+jobs:
+  post-article:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: curl, json
+      
+      - name: Post article to WordPress
+        env:
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: |
+          php scripts/post-to-wordpress.php manner
+      
+      - name: Notify completion
+        run: |
+          echo "✅ 「大人の関係のマナー」記事を投稿しました"
