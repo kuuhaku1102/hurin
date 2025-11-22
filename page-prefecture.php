@@ -101,36 +101,6 @@ get_header();
     </div>
   </section>
 
-  <!-- 他の都道府県へのリンク -->
-  <section class="other-prefectures-section">
-    <div class="section-header">
-      <h2 class="section-title">他の都道府県を見る</h2>
-      <p class="section-description">お住まいの地域や気になる地域を選択してください</p>
-    </div>
-
-    <?php
-    $all_prefectures = hurin_get_prefectures();
-    // 現在の都道府県を除外
-    $other_prefectures = array_filter( $all_prefectures, function( $pref ) use ( $prefecture_slug ) {
-      return $pref['slug'] !== $prefecture_slug;
-    });
-    // ランダムに10件取得
-    shuffle( $other_prefectures );
-    $other_prefectures = array_slice( $other_prefectures, 0, 10 );
-    ?>
-
-    <div class="other-prefectures-list">
-      <?php foreach ( $other_prefectures as $pref ) : ?>
-        <a href="<?php echo esc_url( hurin_get_prefecture_url( $pref['slug'] ) ); ?>" class="other-prefecture-link">
-          <?php echo esc_html( $pref['name'] ); ?>
-        </a>
-      <?php endforeach; ?>
-    </div>
-
-    <div class="back-to-top-link">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>">← トップページに戻る</a>
-    </div>
-  </section>
 
 <?php
 // フッターの読み込み
