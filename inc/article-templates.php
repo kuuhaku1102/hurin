@@ -43,9 +43,16 @@ function hurin_get_template_usage_guide() {
  * @return array 記事データ
  */
 function hurin_get_template_spot_guide() {
-  $prefectures = hurin_get_prefectures();
-  $prefecture = $prefectures[array_rand($prefectures)];
-  $pref_name = $prefecture["name"];
+  // hurin_get_prefectures()が定義されていない場合のフォールバック
+  if (function_exists('hurin_get_prefectures')) {
+    $prefectures = hurin_get_prefectures();
+    $prefecture = $prefectures[array_rand($prefectures)];
+    $pref_name = $prefecture["name"];
+  } else {
+    // スタンドアロン実行時の都道府県リスト
+    $pref_list = array('北海道', '東京', '大阪', '福岡', '愛知', '神奈川', '埼玉', '千葉', '京都', '兵庫');
+    $pref_name = $pref_list[array_rand($pref_list)];
+  }
   
   $hotspots_data = array(
     '北海道' => array('札幌', 'すすきの', '函館'),
