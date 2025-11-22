@@ -2,19 +2,17 @@ name: Deploy Mama Gen Theme to ConoHa WING
 
 on:
   push:
-    branches: [ main ]        # main ブランチに push → 自動デプロイ
-  workflow_dispatch:           # 手動デプロイも可
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 📦 リポジトリ取得
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 🔐 SSHキー設定
       - name: Setup SSH key
         run: |
           mkdir -p ~/.ssh
@@ -22,12 +20,10 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p 8022 -H www1012.conoha.ne.jp >> ~/.ssh/known_hosts
 
-      # 🔍 接続テスト
       - name: Test SSH connection
         run: |
           ssh -i ~/.ssh/id_ed25519 -p 8022 c3659606@www1012.conoha.ne.jp "echo '✅ SSH connection successful!' && pwd"
 
-      # 🚀 デプロイ（SFTP）
       - name: Deploy Mama Gen Theme files
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
@@ -35,7 +31,7 @@ jobs:
           port: 8022
           username: c3659606
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          local_path: ./mama-gen-theme/           
+          local_path: ./
           remote_path: "public_html/volitionmagazine.com/wp-content/themes/mama-gen-theme/"
           sftp_only: true
           delete_remote_files: false
