@@ -76,7 +76,7 @@
   <?php else : ?>
     <p>表示できるデータがありません。</p>
   <?php endif; ?>
-
+<p>test</p>
   <footer class="footer">
     <p>&copy; <?php echo date( 'Y' ); ?> <?php bloginfo('name'); ?></p>
   </footer>
