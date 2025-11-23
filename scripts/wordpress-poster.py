@@ -44,7 +44,7 @@ def remove_h1_from_html(html_content):
 
 def get_thumbnail_image(keywords):
     """
-    Picsum Photosからフリー素材画像を取得する
+    ローカルのプレースホルダー画像を読み込む
     
     Args:
         keywords: 検索キーワード（使用しないが互換性のため残す）
@@ -53,23 +53,23 @@ def get_thumbnail_image(keywords):
         画像データ（bytes）またはNone
     """
     try:
-        # Picsum Photosを使用（API key不要、安定している）
-        # ランダムな美しい画像を取得
-        import random
-        random_seed = random.randint(1, 1000)
-        image_url = f"https://picsum.photos/seed/{random_seed}/800/600"
+        # スクリプトのディレクトリを取得
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        placeholder_image_path = os.path.join(script_dir, "placeholder-image.png")
         
-        print(f"📷 画像を取得中: {image_url}")
-        response = requests.get(image_url, timeout=10)
+        print(f"📷 プレースホルダー画像を読み込み中: {placeholder_image_path}")
         
-        if response.status_code == 200:
-            print("✅ 画像の取得に成功しました")
-            return response.content
-        else:
-            print(f"❌ 画像の取得に失敗しました: {response.status_code}")
+        if not os.path.exists(placeholder_image_path):
+            print(f"❌ プレースホルダー画像が見つかりません: {placeholder_image_path}")
             return None
+        
+        with open(placeholder_image_path, 'rb') as f:
+            image_data = f.read()
+        
+        print("✅ プレースホルダー画像の読み込みに成功しました")
+        return image_data
     except Exception as e:
-        print(f"❌ 画像取得エラー: {e}")
+        print(f"❌ 画像読み込みエラー: {e}")
         return None
 
 def upload_media_to_wordpress(image_data, filename, auth):
