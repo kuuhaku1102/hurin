@@ -232,22 +232,22 @@ if __name__ == "__main__":
     # 認証情報
     auth = (WP_USER, WP_APP_PASSWORD)
     
-    # サムネイル画像を取得してアップロード
+    # アイキャッチ画像を非表示にする
     featured_image_id = None
-    print("\n" + "="*50)
-    print("📷 サムネイル画像の取得・アップロード")
-    print("="*50)
-    
-    image_data = get_thumbnail_image("couple,romance")
-    if image_data:
-        # 画像をWordPressにアップロード
-        import time
-        import hashlib
-        # タイトルのハッシュを使ってユニークなファイル名を生成（ASCIIのみ）
-        title_hash = hashlib.md5(title.encode('utf-8')).hexdigest()[:8]
-        timestamp = int(time.time())
-        filename = f"thumbnail_{timestamp}_{title_hash}.jpg"
-        featured_image_id = upload_media_to_wordpress(image_data, filename, auth)
+    # print("\n" + "="*50)
+    # print("📷 サムネイル画像の取得・アップロード")
+    # print("="*50)
+    # 
+    # image_data = get_thumbnail_image("couple,romance")
+    # if image_data:
+    #     # 画像をWordPressにアップロード
+    #     import time
+    #     import hashlib
+    #     # タイトルのハッシュを使ってユニークなファイル名を生成（ASCIIのみ）
+    #     title_hash = hashlib.md5(title.encode('utf-8')).hexdigest()[:8]
+    #     timestamp = int(time.time())
+    #     filename = f"thumbnail_{timestamp}_{title_hash}.jpg"
+    #     featured_image_id = upload_media_to_wordpress(image_data, filename, auth)
     
     # 記事を投稿
     print("\n" + "="*50)

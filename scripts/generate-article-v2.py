@@ -74,12 +74,25 @@ def save_article(title, content):
     """記事をファイルに保存"""
     output_file = SCRIPT_DIR / "generated-article.html"
     
+    # AIが出力したMarkdownコードブロック記法を削除
+    content = content.strip()
+    if content.startswith('```html'):
+        content = content[7:]  # '```html' を削除
+    if content.startswith('```'):
+        content = content[3:]  # '```' を削除
+    if content.endswith('```'):
+        content = content[:-3]  # 末尾の '```' を削除
+    content = content.strip()
+    
+    # タイトルをh1タグで追加（WordPress投稿スクリプトがタイトルを抽出できるように）
+    full_content = f"<h1>{title}</h1>\n{content}"
+    
     with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(content)
+        f.write(full_content)
     
     print(f"\n💾 記事を保存しました: {output_file}")
     print(f"   タイトル: {title}")
-    print(f"   文字数: {len(content)}文字")
+    print(f"   文字数: {len(full_content)}文字")
     
     return output_file
 
