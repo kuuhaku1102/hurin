@@ -27,7 +27,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           cd scripts
-          python3 generate-article.py usage
+          python3 generate-article-v2.py
 
       - name: Post article to WordPress
         env:
