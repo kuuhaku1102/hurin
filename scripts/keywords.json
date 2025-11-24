@@ -1,93 +1,126 @@
 {
   "main_keywords": [
-    "不倫募集掲示板",
-    "不倫相手募集",
-    "セカンドパートナー探し",
-    "既婚者の出会い",
-    "大人の関係募集",
-    "不倫パートナー募集",
-    "秘密の関係",
-    "既婚者同士の出会い",
-    "不倫掲示板の使い方",
-    "セカンドパートナーの見つけ方"
+    "既婚者マッチングアプリ",
+    "セカンドパートナー募集サイト",
+    "大人の出会い掲示板",
+    "婚外恋愛コミュニティ",
+    "既婚者専用SNS",
+    "秘密の関係探し",
+    "プラトニック不倫",
+    "既婚者同士の交流",
+    "割り切った関係募集",
+    "家庭外パートナー探し",
+    "既婚者向けマッチングサービス",
+    "大人の恋愛相談",
+    "セカンドライフパートナー",
+    "既婚者の悩み相談",
+    "心の支え探し"
   ],
   "sub_keywords": [
-    "40代",
-    "50代",
-    "30代",
-    "地方",
-    "都内",
-    "安全性",
-    "匿名",
-    "初心者",
-    "体験談",
-    "成功例",
-    "失敗例",
-    "注意点",
-    "リスク",
-    "トラブル回避",
-    "おすすめ",
-    "比較",
-    "ランキング",
-    "口コミ",
-    "評判",
-    "メリット",
-    "デメリット"
+    "40代女性",
+    "50代男性",
+    "30代既婚者",
+    "東京都内",
+    "大阪エリア",
+    "地方在住",
+    "初めての方",
+    "経験者向け",
+    "安全な使い方",
+    "身バレ防止",
+    "匿名性重視",
+    "長期関係希望",
+    "短期間限定",
+    "プラトニック希望",
+    "真剣交際",
+    "気軽な出会い",
+    "週末限定",
+    "平日昼間",
+    "夜の時間帯",
+    "費用を抑えたい",
+    "無料で始める"
   ],
   "article_types": [
     {
-      "type": "usage",
-      "title_pattern": "{main_keyword}の賢い使い方｜{sub_keyword}向け完全ガイド",
-      "description": "実用的な活用方法を解説する記事"
+      "type": "guide",
+      "title_pattern": "{main_keyword}完全ガイド｜{sub_keyword}のための始め方",
+      "description": "初心者向けの総合ガイド記事"
     },
     {
       "type": "experience",
-      "title_pattern": "{main_keyword}で{sub_keyword}が成功した体験談",
+      "title_pattern": "私が{main_keyword}で{sub_keyword}と出会えた実体験",
       "description": "実際の体験談を元にした記事"
     },
     {
       "type": "qa",
-      "title_pattern": "{main_keyword}のよくある質問｜{sub_keyword}の疑問を解決",
+      "title_pattern": "{main_keyword}のよくある質問20選｜{sub_keyword}の疑問を解決",
       "description": "Q&A形式で疑問に答える記事"
     },
     {
       "type": "comparison",
-      "title_pattern": "{main_keyword}と{sub_keyword}を徹底比較｜どちらがおすすめ？",
-      "description": "複数の選択肢を比較する記事"
+      "title_pattern": "{main_keyword}を徹底比較｜{sub_keyword}に最適なのはどれ？",
+      "description": "複数のサービスを比較する記事"
     },
     {
       "type": "ranking",
-      "title_pattern": "{main_keyword}おすすめランキング｜{sub_keyword}で選ぶベスト5",
+      "title_pattern": "{main_keyword}おすすめTOP7｜{sub_keyword}が選ぶ人気ランキング",
       "description": "ランキング形式で紹介する記事"
     },
     {
-      "type": "risk",
-      "title_pattern": "{main_keyword}の{sub_keyword}に注意！リスクと対策完全版",
-      "description": "リスクと対策を解説する記事"
+      "type": "safety",
+      "title_pattern": "{main_keyword}の安全対策｜{sub_keyword}が知っておくべきリスク回避法",
+      "description": "安全性とリスク対策を解説する記事"
     },
     {
       "type": "beginner",
-      "title_pattern": "{main_keyword}初心者ガイド｜{sub_keyword}から始める安全な使い方",
+      "title_pattern": "{main_keyword}初心者講座｜{sub_keyword}でも安心して始められる方法",
       "description": "初心者向けの基礎知識を解説する記事"
     },
     {
       "type": "advanced",
-      "title_pattern": "{main_keyword}上級者向け｜{sub_keyword}を活用した効果的な方法",
+      "title_pattern": "{main_keyword}活用術｜{sub_keyword}が実践する効果的なテクニック",
       "description": "上級者向けのテクニックを解説する記事"
     },
     {
       "type": "spot",
-      "title_pattern": "{main_keyword}で出会った後の{sub_keyword}おすすめスポット5選",
+      "title_pattern": "{main_keyword}で出会った後の{sub_keyword}向けデートスポット",
       "description": "待ち合わせ場所やデートスポットを紹介する記事"
     },
     {
       "type": "manner",
-      "title_pattern": "{main_keyword}の{sub_keyword}マナー｜守るべきルールとエチケット",
+      "title_pattern": "{main_keyword}のマナーとルール｜{sub_keyword}が守るべきエチケット",
       "description": "マナーやルールを解説する記事"
+    },
+    {
+      "type": "psychology",
+      "title_pattern": "{main_keyword}の心理学｜{sub_keyword}が求める関係性とは",
+      "description": "心理学的な視点から解説する記事"
+    },
+    {
+      "type": "success",
+      "title_pattern": "{main_keyword}で成功する秘訣｜{sub_keyword}の成功事例から学ぶ",
+      "description": "成功事例を分析する記事"
+    },
+    {
+      "type": "failure",
+      "title_pattern": "{main_keyword}でよくある失敗｜{sub_keyword}が避けるべき落とし穴",
+      "description": "失敗事例から学ぶ記事"
+    },
+    {
+      "type": "cost",
+      "title_pattern": "{main_keyword}の料金比較｜{sub_keyword}向けコスパ最強プラン",
+      "description": "料金やコストについて解説する記事"
+    },
+    {
+      "type": "review",
+      "title_pattern": "{main_keyword}の口コミ評判｜{sub_keyword}のリアルな声を集めました",
+      "description": "口コミや評判をまとめた記事"
     }
   ],
   "used_combinations": [
-    "大人の関係募集|地方|ranking",
-    "セカンドパートナー探し|注意点|advanced"
+    "婚外恋愛コミュニティ|安全な使い方|experience",
+    "セカンドパートナー募集サイト|地方在住|spot",
+    "セカンドパートナー募集サイト|30代既婚者|guide",
+    "既婚者同士の交流|身バレ防止|failure",
+    "大人の出会い掲示板|50代男性|spot"
   ]
 }
